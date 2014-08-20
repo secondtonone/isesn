@@ -33,7 +33,7 @@ body {
     font-size:1em;
 	border:0px;
 	max-width:260px;
-	background:rgba(248, 248, 248, 0.8);
+	background:rgba(248, 248, 248);
 }
 .ui-autocomplete {
 	max-width:400px;

@@ -22,7 +22,7 @@
         size : '7px',
 
         // scrollbar color, accepts any hex/color value
-        color: '#2E4293',
+        color: '#D1D1D1',
 
         // scrollbar position - left/right
         position : 'right',
@@ -37,10 +37,10 @@
         opacity : .8,
 
         // enables always-on mode for the scrollbar
-        alwaysVisible : false,
+        alwaysVisible : true,
 
         // check if we should hide the scrollbar when user is hovering over
-        disableFadeOut : false,
+        disableFadeOut : true,
 
         // sets visibility of the rail
         railVisible : false,

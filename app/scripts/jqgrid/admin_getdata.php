@@ -174,7 +174,7 @@ try {
 					
 			$firstRowIndex = $curPage * $rowsPerPage - $rowsPerPage;
 				//получаем список из базы
-			$res = $dbh->prepare('SELECT `id_user`,`login`,`password`,`active`,`id_right`,`name`,`number` FROM `users`'.$qWhere.' ORDER BY '.$sortingField.' '.$sortingOrder.' LIMIT '.$firstRowIndex.', '.$rowsPerPage);
+			$res = $dbh->prepare('SELECT `id_user`,`login`,`password`,`active`,`id_right`,`name`,`number`,`online`,`date` FROM `users`'.$qWhere.' ORDER BY '.$sortingField.' '.$sortingOrder.' LIMIT '.$firstRowIndex.', '.$rowsPerPage);
 			$res->execute(array());
 			
 				//сохраняем номер текущей страницы, общее количество страниц и общее количество записей
@@ -190,7 +190,7 @@ try {
 			$password='';
 			
 			$response->rows[$i]['id']=$row['id_user'];
-			$response->rows[$i]['cell']=array($row['id_user'],$row['login'],$row['password'],$password,$row['active'],$row['id_right'],$row['name'],$row['number']);
+			$response->rows[$i]['cell']=array($row['id_user'],$row['login'],$row['password'],$password,$row['active'],$row['id_right'],$row['name'],$row['number'],$row['online'],$row['date']);
 						
 			$i++;
 				}

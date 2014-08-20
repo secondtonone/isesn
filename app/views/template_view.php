@@ -10,6 +10,7 @@
     <?php require 'app/views/bootstraps/'.$bootstrap; ?>
     <script src="/js/tooltip.js" type="text/javascript"></script>
     <script src="/js/sticky.full.js" type="text/javascript"></script>
+    <script src="/js/jquery.slimscroll.js" type="text/javascript"></script>
 </head>
 <body>
 <?php require_once 'app/views/'.$content_view; ?>

@@ -3,4 +3,3 @@
 	<script src="/js/jqgrid/js/grid.locale-ru.js" type="text/javascript"></script>
 	<script src="/js/jqgrid/tables/admin_journal_jqgrid.js" type="text/javascript"></script>
 	<script src="/js/panel.js" type="text/javascript"></script>
-    <script src="/js/jquery.slimscroll.js" type="text/javascript"></script>

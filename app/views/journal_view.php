@@ -22,7 +22,134 @@
     <div class="page-content">
     	<div class="status-bar">
         	<div class="caption"><i class="icon icon-user"></i>Пользователи</div>
-            <div class="user-list"><div></div></div>
+            <div class="user-list">
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user online">
+                	<div class="marker online"></div>
+                    <div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+                <div class="user offline">
+                	<div class="marker offline"></div>
+                	<div class="wrap">
+                        <div class="login">firstuser</div>
+                        <div class="name">Вася Пупкинов Раскодиновичубертатнович</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="wrapper-content">
         	<div class="content">

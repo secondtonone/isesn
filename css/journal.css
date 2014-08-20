@@ -10,8 +10,57 @@
 	padding: 10px;
 	margin-bottom:10px;
 }
-.user-list div {height:1000px;}
-
+.user-list {
+	padding-right: 15px;
+}
+.user-list .user {
+	background: #FAFAFA;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 5px;
+	margin-bottom:5px;
+}
+.user-list .online {
+	color: #2E4293;
+}
+.user-list .offline {
+	color: #E02222;
+}
+.user .marker {
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 7px;
+	display:inline-block;
+	font-weight:600;
+}
+.user .wrap {
+	width:200px;
+	float:right;
+	overflow:hidden;
+}
+.user .login {
+	width:180px;
+	height: 15px;
+}
+.user .name {
+	width:180px;
+	height: 15px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.user .online {
+	background: #2E4293;
+}
+.user .online::after {
+	content: 'online';
+}
+.user .offline {
+	background: #E02222;
+}
+.user .offline::after {
+	content: 'offline';
+}
 .wrapper-content {
 	margin-left: 310px;
 }

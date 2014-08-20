@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	$(document).tooltip({show: {
 		effect: "fadeIn",
-		delay: 350},
+		delay: 150},
 		hide:{
 		effect: "fadeOut",
 		delay: 100},
