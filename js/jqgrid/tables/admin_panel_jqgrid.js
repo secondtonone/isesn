@@ -242,7 +242,7 @@ $("#users").jqGrid({
             url:"/app/scripts/jqgrid/admin_getdata.php?q=2",
             datatype: 'json',
             mtype: 'POST',
-            colNames:['#','Логин','Пароль','Пароль','Статус','Уровень прав','Пользователь','Телефон','Активность','Дата входа'],
+            colNames:['#','Логин','Пароль','Пароль','Статус','Уровень прав','Пользователь','Телефон','Активность'],
             colModel :[
                 {name:'id_user', index:'id_user', width:35, align:'right',editable:false, search:false},
 				{name:'login', index:'login', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
@@ -252,8 +252,7 @@ $("#users").jqGrid({
 				{name:'id_right', index:'id_right', width:150, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"user:Пользователь;admin:Администратор"},editable:true,stype:"select", searchoptions:{value:"user:Пользователь;admin:Администратор",sopt:['eq']}},
 				{name:'name', index:'name', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 150}},
 				{name:'number', index:'number', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 11}},
-				{name:'online', index:'online', width:150, align:'center',editable:false, search:false},
-				{name:'date', index:'date', width:150, align:'center',editable:false, search:false}				
+				{name:'online', index:'online', width:150, align:'center',editable:false, search:false}		
 				],
             pager: '#pager2',
 			autowidth:true,

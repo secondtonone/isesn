@@ -190,7 +190,7 @@ try {
 			$password='';
 			
 			$response->rows[$i]['id']=$row['id_user'];
-			$response->rows[$i]['cell']=array($row['id_user'],$row['login'],$row['password'],$password,$row['active'],$row['id_right'],$row['name'],$row['number'],$row['online'],$row['date']);
+			$response->rows[$i]['cell']=array($row['id_user'],$row['login'],$row['password'],$password,$row['active'],$row['id_right'],$row['name'],$row['number'],$row['online']);
 						
 			$i++;
 				}
