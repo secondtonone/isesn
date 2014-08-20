@@ -1,0 +1,26 @@
+.status-bar {
+	width: 300px;
+	height:755px;
+	float:left;
+}
+.status-bar .caption {
+	background: #2E4293;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 10px;
+	margin-bottom:10px;
+}
+.user-list div {height:1000px;}
+
+.wrapper-content {
+	margin-left: 310px;
+}
+.wrapper-content .ui-jqgrid-titlebar {
+    height: 18px;
+}
+.icon-notification::after {
+	content: " ";
+}
+.icon-archive::after {
+	content: " ";
+}
