@@ -1,13 +1,15 @@
 $(document).ready(function(){
 	
-	function getList(param)
+	function getList()
 	{	
-		return $.ajax({
+		var lists = $.ajax({
 					type: "POST",
 					url: "/app/scripts/lists/user_lists.php",
-					data: "q="+param,
+					data: "q=1",
 					async: false
-				}).responseText;
+				}).responseText,
+			list = JSON.parse(lists);
+		return list;
 	}
 	
 	function showErrorDialog(str)
@@ -20,11 +22,30 @@ $(document).ready(function(){
 			}
 		});
 	}
-
-
-	var selectType={value:getList('type'),sopt:['eq']};
+	
+	function getUsers()
+	{	
+		return $.ajax({
+					type: "POST",
+					url: "/app/scripts/lists/online_users.php",
+					async: false
+				}).responseText;
+	}
+	
+	function userListGenerate()
+	{
+		var users=getUsers();
+		$(".list-preloader").hide();
+		$('.user-list').html(users);
 		
-	/*$(".preloader").hide();*/
+	}
+
+	userListGenerate();
+	
+	setInterval(userListGenerate,300000);
+	
+	var selectList=getList(),
+		selectType={value:selectList.rows['type'],sopt:['eq']};
 	
 $("#notifications").jqGrid({
             url:"/app/scripts/jqgrid/admin_journal_getdata.php?q=1",
@@ -143,9 +164,10 @@ $("#journal").jqGrid({
             url:"/app/scripts/jqgrid/admin_journal_getdata.php?q=2",
             datatype: 'json',
             mtype: 'POST',
-            colNames:['#','Менеджер','Действие','Время'],
+            colNames:['#','','Менеджер','Действие','Время'],
             colModel :[
                 {name:'id_event', index:'id_event', width:35, align:'right',editable:false, search:false,editable:false},
+				{name:'id_user', index:'id_user', width:35, align:'right',editable:false, search:false,editable:false},
 				{name:'name', index:'name', width:250, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
 				{name: 'id_type_event',index: 'id_type_event', width:250, align:'left',edittype:"select",formatter:"select",editoptions:selectType,stype:"select",searchoptions:selectType},
 				{name:'date', index:'date', width:50, align:'left', edittype:"text",editable:false,searchoptions:{sopt:['bw','eq','ne','cn']}}				

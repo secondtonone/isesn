@@ -105,7 +105,7 @@ try {
 					
 			
 				if (isset($_POST['_search']) && $_POST['_search'] == 'true') {
-					$allowedFields = array('id_event', 'name', 'id_type_event', 'time_event');
+					$allowedFields = array('id_event','id_user', 'name', 'id_type_event', 'time_event');
 					$allowedOperations = array('AND', 'OR');
 							
 					$searchData = json_decode($_POST['filters']);
@@ -155,7 +155,7 @@ try {
 					
 			$firstRowIndex = $curPage * $rowsPerPage - $rowsPerPage;
 				//получаем список из базы
-			$res = $dbh->prepare('SELECT j.`id_event`, u.`name`, j.`id_type_event`, j.`time_event` FROM `users_journal` j LEFT JOIN `users` u ON j.`id_user`= u.`id_user` '.$qWhere.' ORDER BY '.$sortingField.' '.$sortingOrder.' LIMIT '.$firstRowIndex.', '.$rowsPerPage);
+			$res = $dbh->prepare('SELECT j.`id_event`,u.`id_user`, u.`name`, j.`id_type_event`, j.`time_event` FROM `users_journal` j LEFT JOIN `users` u ON j.`id_user`= u.`id_user` '.$qWhere.' ORDER BY '.$sortingField.' '.$sortingOrder.' LIMIT '.$firstRowIndex.', '.$rowsPerPage);
 			$res->execute(array());
 			
 				//сохраняем номер текущей страницы, общее количество страниц и общее количество записей

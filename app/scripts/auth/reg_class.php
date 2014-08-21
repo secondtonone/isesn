@@ -8,7 +8,7 @@ class reg_class {
 	private $path=ROOT;
 	private $query_for_data='SELECT * FROM `users` WHERE login=?';
 	private $query_for_upd='UPDATE `users` SET `hash`=? WHERE `id_user`=?';
-	private $query='UPDATE `users` SET `browser`=? WHERE `id_user`=?';
+	private $query='UPDATE `users` SET `browser`=?,`online`=? WHERE `id_user`=?';
 	
 	public function authorize ($login,$password,$checked=NULL)
 	{
@@ -25,7 +25,7 @@ class reg_class {
 				$browser=$_SERVER['HTTP_USER_AGENT'];
 				$time=date('G:i:sO Y-m-d');
 				
-				$this->upd_data(array($browser,$data["id_user"]),$this->query);
+				$this->upd_data(array($browser,'online',$data["id_user"]),$this->query);
 				//добавить запрос на добавления события в журнал
 								
 				$_SESSION["id_user"]=$data["id_user"];
@@ -33,7 +33,6 @@ class reg_class {
 				$_SESSION["id_right"]=$data["id_right"];
 				
 				$_SESSION["hash"]=$this->make_hash($data);
-				
 				
 				if (!empty($checked))
 				{
@@ -93,7 +92,7 @@ class reg_class {
 			
 			$time=date('G:i:sO Y-m-d');
 				
-			$reg_class->upd_data(array($browser,$data["id_user"]),$reg_class->query);
+			$reg_class->upd_data(array($browser,'online',$data["id_user"]),$reg_class->query);
 				//добавить запрос на добавления события в журнал
 								
 			$_SESSION["id_user"]=$data["id_user"];
@@ -141,7 +140,6 @@ class reg_class {
 		return $hash;
 	}
 	
-	
 	protected function upd_data($data,$query) 
 	{
 		$dbh=$this->connect();
@@ -156,6 +154,17 @@ class reg_class {
 		$query->execute($data);
 		$row = $query->fetch(\PDO::FETCH_ASSOC);
 		return $row;
+	}
+	
+	public function unauthorize () 
+	{
+		$this->upd_data(array($_SERVER['HTTP_USER_AGENT'],'offline',$_SESSION["id_user"]),$this->query);
+		
+		setcookie ("l", '',time()-3600,"/");
+		setcookie ("h", '',time()-3600,"/");	
+		
+		session_unset();
+		session_destroy();	
 	}
 		
 	protected function check_name ($string) 

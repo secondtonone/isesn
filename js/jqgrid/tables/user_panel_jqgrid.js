@@ -17,7 +17,7 @@ $(document).ready(function(){
 	{	
 		return $.ajax({
 					type: "POST",
-					url: "/app/scripts/lists/admin_note.php",
+					url: "/app/scripts/lists/notes.php",
 					data: "q=1",
 					async: false
 				}).responseText;
@@ -314,7 +314,9 @@ $("#objects").jqGrid({
        } , position: "last", title:"Экспорт в Excel", cursor: "pointer"}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''}); 
 	   
 	    $("#edit_objects").addClass('ui-state-disabled'); 
-	   
+		
+	   	$("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+		
 		$("#pager_left table.navtable tbody tr").append ('<div class="select-wrap">Статус: <select class="sell-out-status"><option value="0" selected="selected">выбрать...</option><option value="1">В продаже</option><option value="2">Продано</option><option value="3">Снять</option><option value="4">Времено снять</option></select></div>');
 		$("#pager_left table.navtable tbody tr").append ('  <div class="select-wrap">Статус по времени: <select class="time-status"><option value="0" selected="selected">выбрать...</option><option value="2">срочно</option><option value="1">не срочно</option></select></div>');
 		
@@ -599,6 +601,8 @@ $("#clients").jqGrid({
        } , position: "last", title:"Экспорт в Excel", cursor: "pointer"}).navSeparatorAdd("#pager2",{sepclass:"ui-separator",sepcontent: ''});
 	   
 	   $("#edit_clients").addClass('ui-state-disabled'); 
+	   
+	   $("#clients").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
 	   
 	   $("#pager2_left table.navtable tbody tr").append('<div class="cl-select-wrap">Статус: <select class="active-status"><option value="0" selected="selected">выбрать...</option><option value="1">Активен</option><option value="2">Не активен</option></select></div>');
 	   

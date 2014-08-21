@@ -19,9 +19,9 @@ try {
 			}
 			else
 			{
-				$pass=md5($_POST['pass'].'salt');
+				$pass=md5($_POST['password'].'salt');
 				
-				$query=$dbh->prepare('INSERT INTO `users`(`login`, `password`, `id_right`, `active`, `name`, `number`) VALUES (?,?,?,?,?,?)');
+				$query=$dbh->prepare('INSERT INTO `users`(`login`, `password`, `id_right`, `active`, `name`, `number`, `online`) VALUES (?,?,?,?,?,?,"offline")');
 				
 				$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number']));
 				

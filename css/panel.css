@@ -21,7 +21,7 @@
 }
 .header .navbar .container {
 	max-width: 1400px;
-	min-width:800px;
+	min-width: 1183px;
 	margin: 0px auto;
 }
 .container .nav {
@@ -104,6 +104,7 @@
 	background-color: #FFFFFF;
 	padding: 7px;
 	max-width: 1387px;
+	min-width: 1170px;
 	min-height:800px;
 	height: auto !important;
 }

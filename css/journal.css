@@ -12,6 +12,21 @@
 }
 .user-list {
 	padding-right: 15px;
+	min-height:700px;
+}
+.user-list .list-preloader {
+	background-image: url("../img/preloader.gif");
+	background-repeat: no-repeat;
+	background-size:contain;
+	height: 32px;
+	width: 32px;
+	display:block;
+	margin: auto;
+	position:relative;
+	top:50%;
+	bottom:0;
+	left:0;
+	right:0;
 }
 .user-list .user {
 	background: #FAFAFA;
@@ -19,6 +34,10 @@
 	color: #FFFFFF;
 	padding: 5px;
 	margin-bottom:5px;
+}
+.user-list .user:hover {
+	background: #E8E8E8;
+	cursor:pointer;
 }
 .user-list .online {
 	color: #2E4293;

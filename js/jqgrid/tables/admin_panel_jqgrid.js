@@ -16,7 +16,7 @@ $(document).ready(function(){
 	{	
 		return $.ajax({
 					type: "POST",
-					url: "/app/scripts/lists/admin_note.php",
+					url: "/app/scripts/lists/notes.php",
 					data: "q=1",
 					async: false
 				}).responseText;
@@ -234,7 +234,10 @@ $("#objects").jqGrid({
 			}},{width:360,reloadAfterSubmit:true,zIndex:99},{width:490,reloadAfterSubmit:true,multipleSearch:true,zIndex:99,closeAfterSearch:true},{width:360,reloadAfterSubmit:true,zIndex:99}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''}).navButtonAdd("#pager",{caption:"",buttonicon:"ui-icon-document", onClickButton:
 	                         function () { 
           $("#objects").jqGrid('excelExport',{"url":"/app/scripts/jqgrid/admin_exportdata.php?q=1"});
-       } , position: "last", title:"Экспорт в Excel", cursor: "pointer"}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''}); 
+       } , position: "last", title:"Экспорт в Excel", cursor: "pointer"}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''});
+	   
+	   $("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+	    
 	   
 $("#pager_left table.navtable tbody tr").append ('Передача объектов: <input id="id_user" type="hidden"/><input id="name_user" type="text" placeholder="Кому" name="user"/><button id="hand-over" title="Передать объекты другому менеджеру">Передать</button>');
 
@@ -246,8 +249,8 @@ $("#users").jqGrid({
             colModel :[
                 {name:'id_user', index:'id_user', width:35, align:'right',editable:false, search:false},
 				{name:'login', index:'login', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
-				{name:'pass', index:'pass', width:150, align:'left', edittype:"text",editable:true,search:false,editoptions: {maxlength:15}},
-				{name:'password', index:'password', width:150, align:'left', edittype:"text",editable:true,search:false,hidden:true},
+				{name:'pass', index:'pass', width:150, align:'left', edittype:"text",editable:false,search:false},
+				{name:'password', index:'password', width:150, align:'left', edittype:"text",editable:true,search:false,hidden:true,editoptions: {maxlength:15}},
 				{name: "active",index: "active", width:150, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"1:Активен;2:Не активен"},editable:true,stype:"select", searchoptions:{value:"1:Активен;2:Не активен",sopt:['eq']}},
 				{name:'id_right', index:'id_right', width:150, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"user:Пользователь;admin:Администратор"},editable:true,stype:"select", searchoptions:{value:"user:Пользователь;admin:Администратор",sopt:['eq']}},
 				{name:'name', index:'name', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 150}},
@@ -258,7 +261,7 @@ $("#users").jqGrid({
 			autowidth:true,
             height:328,
 			rowNum:40,
-            rowList:[40],
+            rowList:[40,60,100],
             sortname: 'id_user',
             sortorder: "asc",
 			multiselect: true,
@@ -496,8 +499,10 @@ $("#users").jqGrid({
 				}, 3000);
 				return [true, "", ""];
 			}
-			}},{width:350,reloadAfterSubmit:true,zIndex:99},{width:460,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:350,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}).navSeparatorAdd("#pager2",{sepclass:"ui-separator",sepcontent: ''}); 
-	   
+			}},{width:350,reloadAfterSubmit:true,zIndex:99},{width:460,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:350,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}).navSeparatorAdd("#pager2",{sepclass:"ui-separator",sepcontent: ''});
+
+$("#users").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+
 $("#pager2_left table.navtable tbody tr").append('Статус: <select class="active-status"><option value="0" selected="selected">выбрать...</option><option value="1">Активен</option><option value="2">Не активен</option></select>');
 
  $(".active-status").change(function() {

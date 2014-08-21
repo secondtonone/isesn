@@ -1,16 +1,10 @@
 <?php
-/*
- * Запускаем сессию
- */
 session_start();
-/*
- * Удаляем данные из сессии
- */
-setcookie ("l", '',time()-3600,"/");
-setcookie ("h", '',time()-3600,"/");	
-session_unset();
-/*
- * Закрываем сессию
- */
-session_destroy();
-// удалить hash из БД, почистить куки
+
+require_once 'reg_class.php';
+
+$result=new \App\Scripts\Auth\reg_class();
+	
+$result->unauthorize();
+
+exit;
