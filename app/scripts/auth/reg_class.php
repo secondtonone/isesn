@@ -5,13 +5,15 @@ define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/app/scripts/connect.php');
 
 class reg_class {
 	
-	private $path=ROOT;
-	private $query_for_data='SELECT * FROM `users` WHERE login=?';
-	private $query_for_upd='UPDATE `users` SET `hash`=? WHERE `id_user`=?';
-	private $query='UPDATE `users` SET `browser`=?,`online`=? WHERE `id_user`=?';
+	private $path = ROOT;
+	private $query_for_data = 'SELECT * FROM `users` WHERE login=?';
+	private $query_for_upd = 'UPDATE `users` SET `hash`=? WHERE `id_user`=?';
+	private $query = 'UPDATE `users` SET `browser`=?,`online`=? WHERE `id_user`=?';
+	private $query_for_journal = 'INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)';
 	
 	public function authorize ($login,$password,$checked=NULL)
 	{
+		
 		$login=$this->check_name($login);
 		$password=$this->check_pass($password);
 		
@@ -33,6 +35,8 @@ class reg_class {
 				$_SESSION["id_right"]=$data["id_right"];
 				
 				$_SESSION["hash"]=$this->make_hash($data);
+				
+				$this->upd_data(array($data["id_user"],1),$this->query_for_journal);
 				
 				if (!empty($checked))
 				{
@@ -100,6 +104,8 @@ class reg_class {
 			$_SESSION["id_right"]=$data["id_right"];
 				
 			$_SESSION["hash"]=$reg_class->make_hash($data);
+			
+			$reg_class->upd_data(array($data["id_user"],1),$reg_class->query_for_journal);
 		}
 		else
 		{
@@ -111,7 +117,11 @@ class reg_class {
 	{
 		
 		$reg_class=new self;	
+		
 		$data=$reg_class->get_data ($data,$reg_class->query_for_data);
+		
+		$reg_class->upd_data(array($_SERVER['HTTP_USER_AGENT'],'online',$_SESSION["id_user"]),$reg_class->query);
+		/*$reg_class->upd_data(array($_SESSION["id_user"],1),$reg_class->query_for_journal);*/
 		
 		return $data['hash'];
 	}
@@ -159,6 +169,7 @@ class reg_class {
 	public function unauthorize () 
 	{
 		$this->upd_data(array($_SERVER['HTTP_USER_AGENT'],'offline',$_SESSION["id_user"]),$this->query);
+		$this->upd_data(array($_SESSION["id_user"],2),$this->query_for_journal);
 		
 		setcookie ("l", '',time()-3600,"/");
 		setcookie ("h", '',time()-3600,"/");	

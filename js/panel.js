@@ -77,4 +77,13 @@ $(document).ready(function () {
         height: '720px'
     });
 	
+	/*$(window).unload(function() {
+         $.ajax({
+					type: "POST",
+					url: "/app/scripts/journal/journal_modify.php",
+					data: "q=1",
+					async: false
+				});       
+    })*/;
+	
 });

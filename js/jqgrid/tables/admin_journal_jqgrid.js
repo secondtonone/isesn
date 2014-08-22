@@ -27,7 +27,7 @@ $(document).ready(function(){
 	{	
 		return $.ajax({
 					type: "POST",
-					url: "/app/scripts/lists/online_users.php",
+					url: "/app/scripts/journal/online_users.php",
 					async: false
 				}).responseText;
 	}
@@ -164,13 +164,13 @@ $("#journal").jqGrid({
             url:"/app/scripts/jqgrid/admin_journal_getdata.php?q=2",
             datatype: 'json',
             mtype: 'POST',
-            colNames:['#','','Менеджер','Действие','Время'],
+            colNames:['#','ID Менеджера','Менеджер','Действие','Время'],
             colModel :[
                 {name:'id_event', index:'id_event', width:35, align:'right',editable:false, search:false,editable:false},
-				{name:'id_user', index:'id_user', width:35, align:'right',editable:false, search:false,editable:false},
-				{name:'name', index:'name', width:250, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
-				{name: 'id_type_event',index: 'id_type_event', width:250, align:'left',edittype:"select",formatter:"select",editoptions:selectType,stype:"select",searchoptions:selectType},
-				{name:'date', index:'date', width:50, align:'left', edittype:"text",editable:false,searchoptions:{sopt:['bw','eq','ne','cn']}}				
+				{name:'id_user', index:'id_user',editable: true,edittype: "text",hidden:true,searchoptions:{sopt:['eq'],searchhidden: true}},
+				{name:'name', index:'name', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
+				{name: 'id_type_event',index: 'id_type_event', width:150, align:'left',edittype:"select",formatter:"select",editoptions:selectType,stype:"select",searchoptions:selectType},
+				{name:'time_event', index:'time_event', width:150, align:'left', edittype:"text",editable:false,searchoptions:{sopt:['bw','eq','ne','cn']}}				
 				],
             pager: '#pager2',
 			autowidth:true,
@@ -181,9 +181,8 @@ $("#journal").jqGrid({
             sortorder: "desc",
 			multiselect: true,
             caption: '<i class="icon-table icon-archive"></i>Журнал действий',
-			viewrecords: true,
-			editurl: '/app/scripts/jqgrid/admin_journal_modifydata.php?q=1',
-        }).navGrid('#pager2',{edit:false,add:false,del:false,view:true,search:true},{width:350,reloadAfterSubmit:true,zIndex:99},{width:350,reloadAfterSubmit:true,zIndex:99},{width:350,reloadAfterSubmit:true,zIndex:99},{width:350,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:450,multipleSearch:true,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}); 
+			viewrecords: true
+        }).navGrid('#pager2',{edit:false,add:false,del:false,view:true,search:true},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:450,multipleSearch:true,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}); 
 
 });
 

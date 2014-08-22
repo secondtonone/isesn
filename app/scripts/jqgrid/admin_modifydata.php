@@ -87,6 +87,12 @@ try {
 		{
 			$id_floor_status=3;
 		}
+		if($_POST['id_sell_out_status']==2)
+		{
+			$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+				
+			$query->execute(array($_POST['id_user'],3));	
+		}
 		
 		if ($_POST['oper']=="edit")
 		{
@@ -98,14 +104,14 @@ try {
 				
 			if ($row['price']!=$_POST['price'] or $row['market_price']!=$_POST['market_price'])
 			{
-				$query=$dbh->prepare('UPDATE `objects` SET `date_change`=NOW() WHERE `id_object`=?');
+				$query=$dbh->prepare('UPDATE `objects` SET `date_change`=NOW()+INTERVAL 2 HOUR WHERE `id_object`=?');
 				$query->execute(array($_POST['id']));
 			}
 				
 			$query=$dbh->prepare('UPDATE `objects_owners` SET `name_owner`=?,`number`=? WHERE `id_owner`=?');
 			$query->execute(array($_POST['name_owner'],$_POST['number'],$_POST['id_owner']));
 				
-			$query=$dbh->prepare('UPDATE `objects` SET `id_district`=?,`id_street`=?,`house_number`=?,`id_building`=?,`id_category`=?,`room_count`=?,`id_planning`=?,`floor`=?,`number_of_floor`=?,`id_floor_status`=?,`space`=?,`id_sell_out_status`=?,`id_time_status`=?,`price`=?,`market_price`=?,`date`=NOW() WHERE `id_object`=?');
+			$query=$dbh->prepare('UPDATE `objects` SET `id_district`=?,`id_street`=?,`house_number`=?,`id_building`=?,`id_category`=?,`room_count`=?,`id_planning`=?,`floor`=?,`number_of_floor`=?,`id_floor_status`=?,`space`=?,`id_sell_out_status`=?,`id_time_status`=?,`price`=?,`market_price`=?,`date`=NOW()+INTERVAL 2 HOUR WHERE `id_object`=?');
 			$query->execute(array($_POST['id_district'],$_POST['id_street'],$_POST['house_number'],$_POST['id_building'],$_POST['id_category'],$_POST['room_count'],$_POST['id_planning'],$_POST['floor'],$_POST['number_of_floor'],$id_floor_status,$_POST['space'],$_POST['id_sell_out_status'],$_POST['id_time_status'],$_POST['price'],$_POST['market_price'],$_POST['id']));
 					
 				echo "Запись отредактирована!";	
@@ -126,7 +132,7 @@ try {
 		{
 			
 			$query=$dbh->prepare('UPDATE `clients` SET `name`=?,`number`=?,`id_category`=?,`id_planning`=?,`id_floor_status`=?,`price`=?,`id_time_status`=?,`id_status`=?,`date`=NOW() WHERE `id_client`=?');
-				$query->execute(array($_POST['name'],$_POST['number'],$_POST['id_category'],$_POST['id_planning'],$_POST['id_floor_status'] ,$_POST['cl_price'], $_POST['id_time_status'],$_POST['id_status'],$_GET['id_client']));
+				$query->execute(array($_POST['name'],$_POST['number'],$_POST['id_category'],$_POST['id_planning'],$_POST['id_floor_status'] ,$_POST['cl_price'], $_POST['id_time_status'],$_POST['id_status'],$_POST['id']));
 						
 			echo "Запись отредактирована!";		
 		}

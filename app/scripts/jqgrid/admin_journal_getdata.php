@@ -132,11 +132,27 @@ try {
 							
 					//вставляем условия
 					if (in_array($rule->field, $allowedFields)) {
+						
+						$field='j.'.$rule->field;
+						
+						if ($rule->field=='name')
+						{
+							 $field='u.name';
+						}
+						if ($rule->field=='id_user')
+						{
+							 $field='u.id_user';
+						}
+						
 						switch ($rule->op) {
-							case 'eq': $qWhere .= $rule->field.' = '.$dbh->quote($rule->data); break;
-							case 'ne': $qWhere .= $rule->field.' <> '.$dbh->quote($rule->data); break;
-					 		case 'bw': $qWhere .= $rule->field.' LIKE '.$dbh->quote($rule->data.'%'); break;
-							case 'cn': $qWhere .= $rule->field.' LIKE '.$dbh->quote('%'.$rule->data.'%'); break;
+							case 'lt': $qWhere .= $field.' < '.$dbh->quote($rule->data); break;
+							case 'le': $qWhere .= $field.' <= '.$dbh->quote($rule->data); break;
+							case 'gt': $qWhere .= $field.' > '.$dbh->quote($rule->data); break;
+							case 'ge': $qWhere .= $field.' >= '.$dbh->quote($rule->data); break;
+							case 'eq': $qWhere .= $field.' = '.$dbh->quote($rule->data); break;
+							case 'ne': $qWhere .= $field.' <> '.$dbh->quote($rule->data); break;
+							case 'bw': $qWhere .= $field.' LIKE '.$dbh->quote($rule->data.'%'); break;
+							case 'cn': $qWhere .= $field.' LIKE '.$dbh->quote('%'.$rule->data.'%'); break;
 							default: throw new Exception('Cool hacker is here!!! :)');
 						}
 					}
@@ -148,7 +164,9 @@ try {
 			}
 						 
 				//определяем количество записей в таблице
-			$rows = $dbh->query('SELECT COUNT(*) AS count FROM `users_journal` '.$qWhere.'');
+			$rows = $dbh->prepare('SELECT COUNT(*) AS count FROM `users_journal` '.$qWhere.'');
+			$rows->execute(array());
+			
 			$totalRows = $rows->fetch(PDO::FETCH_ASSOC);
 					
 			
@@ -168,7 +186,7 @@ try {
 			while($row = $res->fetch(PDO::FETCH_ASSOC)) {
 					
 			$response->rows[$i]['id']=$row['id_event'];
-			$response->rows[$i]['cell']=array($row['id_event'],$row['name'],$row['id_type_event'],$row['time_event']);
+			$response->rows[$i]['cell']=array($row['id_event'],$row['id_user'],$row['name'],$row['id_type_event'],$row['time_event']);
 						
 			$i++;
 				}

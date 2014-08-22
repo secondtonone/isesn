@@ -122,7 +122,7 @@ $("#objects").jqGrid({
 			rowNum:20,
             rowList:[20,50,100],
             sortname: 'id_object',
-            sortorder: "asc",
+            sortorder: "desc",
             caption: '<i class="icon-table icon-object"></i>Объекты недвижимости',
 			viewrecords: true,
 			subGrid: true,
@@ -323,7 +323,7 @@ $("#users").jqGrid({
 				autowidth:true,
 				multiselect: true,
 				height: '100%',
-				editurl: '/app/scripts/jqgrid/admin_modifydata.php?q=4&id_client='+row_id,
+				editurl: '/app/scripts/jqgrid/admin_modifydata.php?q=4',
 				});
 				$("#"+subgrid_table_id).jqGrid('navGrid',"#"+pager_id,{edit:true,add:false,del:false, search:true},{width:360,reloadAfterSubmit:true, beforeShowForm: function(form) { 
 		
