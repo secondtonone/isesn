@@ -12,7 +12,7 @@ $(document).ready(function () {
 			success: function(msg){
 					window.location = 'http://'+site+'/';		
 			}
-       })
+       });
 	});
 	
 	$('.panel').click(function(){
@@ -77,13 +77,15 @@ $(document).ready(function () {
         height: '720px'
     });
 	
-	/*$(window).unload(function() {
-         $.ajax({
-					type: "POST",
-					url: "/app/scripts/journal/journal_modify.php",
-					data: "q=1",
-					async: false
-				});       
-    })*/;
+	function activityTime () {
+		$.ajax({
+			type: "POST",
+			url: "/app/scripts/journal/journal_modify.php",
+			data:"q=2",
+			async: false
+			});
+	}
+	activityTime();
+	setInterval(activityTime,300000);
 	
 });

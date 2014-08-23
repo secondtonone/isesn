@@ -41,7 +41,7 @@
 			if($(this).html() == note && $(this).is(':visible'))
 				{ 
 				duplicate = 'yes';
-				if(!settings['duplicates'])
+				if(!settings.duplicates)
 					{ display = false; }
 				}
 			if($(this).attr('id')==uniqID)
@@ -64,7 +64,7 @@
 			var height = $('#' + uniqID).height();
 			$('#' + uniqID).css('height', height);
 			
-			$('#' + uniqID).slideDown(settings['speed']);
+			$('#' + uniqID).slideDown(settings.speed);
 			display = true;
 			}
 		
@@ -72,12 +72,12 @@
 		$('.sticky').ready(function()
 			{
 			// If 'autoclose' is enabled, set a timer to close the sticky
-			if(settings['autoclose'])
-				{ $('#' + uniqID).delay(settings['autoclose']).fadeOut(settings['speed']); }
+			if(settings.autoclose)
+				{ $('#' + uniqID).delay(settings.autoclose).fadeOut(settings.speed); }
 			});
 		// Closing a sticky
 		$('.sticky-close').click(function()
-			{ $('#' + $(this).attr('rel')).dequeue().fadeOut(settings['speed']); });
+			{ $('#' + $(this).attr('rel')).dequeue().fadeOut(settings.speed); });
 		
 		
 		// Callback data
@@ -87,7 +87,7 @@
 			'duplicate'	:	duplicate,
 			'displayed'	: 	display,
 			'position'	:	position
-			}
+			};
 		
 		// Callback function?
 		if(callback)
@@ -95,5 +95,5 @@
 		else
 			{ return(response); }
 		
-		}
+		};
 	})( jQuery );

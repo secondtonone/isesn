@@ -8,7 +8,7 @@ class reg_class {
 	private $path = ROOT;
 	private $query_for_data = 'SELECT * FROM `users` WHERE login=?';
 	private $query_for_upd = 'UPDATE `users` SET `hash`=? WHERE `id_user`=?';
-	private $query = 'UPDATE `users` SET `browser`=?,`online`=? WHERE `id_user`=?';
+	private $query = 'UPDATE `users` SET `browser`=?,`online`=?,`time_activity`=NOW()+INTERVAL 2 HOUR WHERE `id_user`=?';
 	private $query_for_journal = 'INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)';
 	
 	public function authorize ($login,$password,$checked=NULL)
@@ -119,9 +119,6 @@ class reg_class {
 		$reg_class=new self;	
 		
 		$data=$reg_class->get_data ($data,$reg_class->query_for_data);
-		
-		$reg_class->upd_data(array($_SERVER['HTTP_USER_AGENT'],'online',$_SESSION["id_user"]),$reg_class->query);
-		/*$reg_class->upd_data(array($_SESSION["id_user"],1),$reg_class->query_for_journal);*/
 		
 		return $data['hash'];
 	}

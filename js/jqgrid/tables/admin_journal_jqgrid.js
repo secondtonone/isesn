@@ -45,7 +45,7 @@ $(document).ready(function(){
 	setInterval(userListGenerate,300000);
 	
 	var selectList=getList(),
-		selectType={value:selectList.rows['type'],sopt:['eq']};
+		selectType={value:selectList.rows.type,sopt:['eq']};
 	
 $("#notifications").jqGrid({
             url:"/app/scripts/jqgrid/admin_journal_getdata.php?q=1",
@@ -164,9 +164,9 @@ $("#journal").jqGrid({
             url:"/app/scripts/jqgrid/admin_journal_getdata.php?q=2",
             datatype: 'json',
             mtype: 'POST',
-            colNames:['#','ID Менеджера','Менеджер','Действие','Время'],
+            colNames:['#','ID Пользователя','Пользователь','Действие','Время'],
             colModel :[
-                {name:'id_event', index:'id_event', width:35, align:'right',editable:false, search:false,editable:false},
+                {name:'id_event', index:'id_event', width:35, align:'right',editable:false, search:false},
 				{name:'id_user', index:'id_user',editable: true,edittype: "text",hidden:true,searchoptions:{sopt:['eq'],searchhidden: true}},
 				{name:'name', index:'name', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
 				{name: 'id_type_event',index: 'id_type_event', width:150, align:'left',edittype:"select",formatter:"select",editoptions:selectType,stype:"select",searchoptions:selectType},
@@ -175,14 +175,23 @@ $("#journal").jqGrid({
             pager: '#pager2',
 			autowidth:true,
             height:328,
-			rowNum:40,
-            rowList:[40,60,120],
+			rowNum:60,
+            rowList:[60,120],
             sortname: 'id_event',
             sortorder: "desc",
 			multiselect: true,
             caption: '<i class="icon-table icon-archive"></i>Журнал действий',
 			viewrecords: true
         }).navGrid('#pager2',{edit:false,add:false,del:false,view:true,search:true},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:450,multipleSearch:true,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}); 
+
+$('.user-list .user').click(function(){
+		var id_user=$(this).attr('id'),
+			mypostdata = $("#journal").jqGrid('getGridParam', 'postData');
+			mypostdata.filters='{"groupOp":"AND","rules":[{"field":"id_user","op":"eq","data":'+id_user+'}]}';
+			$("#journal").jqGrid('setGridParam', {postData: mypostdata, search:true});
+			$("#journal").trigger("reloadGrid");
+	});
+
 
 });
 

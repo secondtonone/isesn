@@ -35,7 +35,7 @@ $(document).ready(function(){
 		{
 			for (var i=0; i<note.total; i++) 
 			{
-				$.sticky(note.rows[i]['text']);
+				$.sticky(note.rows[i].text);
 			}
 		}
 	}
@@ -54,16 +54,16 @@ $(document).ready(function(){
 	stikyGenerate();
 	
 	var selectList=getList(),
-		selectСategory={value:selectList.rows['category'],sopt:['eq']},
-		selectBuilding={value:selectList.rows['building'],sopt:['eq']},
-		selectPlanning={value:selectList.rows['planning'],sopt:['eq']},
-		selectSellOutStatus={value:selectList.rows['sellstatus'],sopt:['eq']},
-		selectTimeStatus={value:selectList.rows['timestatus'],sopt:['eq']},
-		selectDistrict={value:selectList.rows['district'],sopt:['eq']},
-		selectFloor={value:selectList.rows['floor'],sopt:['eq'],searchhidden: true},
-		selectRenovation={value:selectList.rows['renovation'],sopt:['eq'],searchhidden: true},
+		selectСategory={value:selectList.rows.category,sopt:['eq']},
+		selectBuilding={value:selectList.rows.building,sopt:['eq']},
+		selectPlanning={value:selectList.rows.planning,sopt:['eq']},
+		selectSellOutStatus={value:selectList.rows.sellstatus,sopt:['eq']},
+		selectTimeStatus={value:selectList.rows.timestatus,sopt:['eq']},
+		selectDistrict={value:selectList.rows.district,sopt:['eq']},
+		selectFloor={value:selectList.rows.floor,sopt:['eq'],searchhidden: true},
+		selectRenovation={value:selectList.rows.renovation,sopt:['eq'],searchhidden: true},
 		selectWindow={value:selectList.rows['window'],sopt:['eq'],searchhidden: true},
-		selectCounter={value:selectList.rows['counter'],sopt:['eq'],searchhidden: true};
+		selectCounter={value:selectList.rows.counter,sopt:['eq'],searchhidden: true};
 		
 	$(".preloader").hide();
 	
@@ -245,17 +245,18 @@ $("#users").jqGrid({
             url:"/app/scripts/jqgrid/admin_getdata.php?q=2",
             datatype: 'json',
             mtype: 'POST',
-            colNames:['#','Логин','Пароль','Пароль','Статус','Уровень прав','Пользователь','Телефон','Активность'],
+            colNames:['#','Логин','Пароль','Пароль','Статус','Уровень прав','Пользователь','Телефон','Активность','Время последней активности'],
             colModel :[
                 {name:'id_user', index:'id_user', width:35, align:'right',editable:false, search:false},
 				{name:'login', index:'login', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions:{maxlength: 15}},
 				{name:'pass', index:'pass', width:150, align:'left', edittype:"text",editable:false,search:false},
 				{name:'password', index:'password', width:150, align:'left', edittype:"text",editable:true,search:false,hidden:true,editoptions: {maxlength:15}},
-				{name: "active",index: "active", width:150, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"1:Активен;2:Не активен"},editable:true,stype:"select", searchoptions:{value:"1:Активен;2:Не активен",sopt:['eq']}},
+				{name: "active",index: "active", width:100, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"1:Активен;2:Не активен"},editable:true,stype:"select", searchoptions:{value:"1:Активен;2:Не активен",sopt:['eq']}},
 				{name:'id_right', index:'id_right', width:150, align:'left',edittype:"select",formatter:"select",search:true,editoptions:{value:"user:Пользователь;admin:Администратор"},editable:true,stype:"select", searchoptions:{value:"user:Пользователь;admin:Администратор",sopt:['eq']}},
-				{name:'name', index:'name', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 150}},
+				{name:'name', index:'name', width:190, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 150}},
 				{name:'number', index:'number', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editoptions: {maxlength: 11}},
-				{name:'online', index:'online', width:150, align:'center',editable:false, search:false}		
+				{name:'online', index:'online', width:100, align:'center',editable:false, search:false,searchoptions:{sopt:['bw','eq','ne','cn']},},
+				{name:'time_activity', index:'time_activity', width:220, align:'left', edittype:"text",editable:false,searchoptions:{sopt:['bw','eq','ne','cn']}}		
 				],
             pager: '#pager2',
 			autowidth:true,
@@ -284,7 +285,7 @@ $("#users").jqGrid({
 				var mypostdata = $("#objects").jqGrid('getGridParam', 'postData');
 					
 				mypostdata.filters='{"groupOp":"AND","rules":[{"field":"id_user","op":"eq","data":"'+id+'"}]}';
-				$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true})
+				$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true});
 				$("#objects").trigger("reloadGrid");
 				},
 			subGridRowExpanded: function(subgrid_id, row_id) {

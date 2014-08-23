@@ -36,7 +36,7 @@ $(document).ready(function(){
 		{
 			for (var i=0; i<note.total; i++) 
 			{
-				$.sticky(note.rows[i]['text']);
+				$.sticky(note.rows[i].text);
 			}
 		}
 	}
@@ -82,16 +82,16 @@ $(document).ready(function(){
 	stikyGenerate();
 		
 	var selectList=getList(),
-		selectСategory={value:selectList.rows['category'],sopt:['eq']},
-		selectBuilding={value:selectList.rows['building'],sopt:['eq']},
-		selectPlanning={value:selectList.rows['planning'],sopt:['eq']},
-		selectSellOutStatus={value:selectList.rows['sellstatus'],sopt:['eq']},
-		selectTimeStatus={value:selectList.rows['timestatus'],sopt:['eq']},
-		selectDistrict={value:selectList.rows['district'],sopt:['eq']},
-		selectFloor={value:selectList.rows['floor'],sopt:['eq'],searchhidden: true},
-		selectRenovation={value:selectList.rows['renovation'],sopt:['eq'],searchhidden: true},
+		selectСategory={value:selectList.rows.category,sopt:['eq']},
+		selectBuilding={value:selectList.rows.building,sopt:['eq']},
+		selectPlanning={value:selectList.rows.planning,sopt:['eq']},
+		selectSellOutStatus={value:selectList.rows.sellstatus,sopt:['eq']},
+		selectTimeStatus={value:selectList.rows.timestatus,sopt:['eq']},
+		selectDistrict={value:selectList.rows.district,sopt:['eq']},
+		selectFloor={value:selectList.rows.floor,sopt:['eq'],searchhidden: true},
+		selectRenovation={value:selectList.rows.renovation,sopt:['eq'],searchhidden: true},
 		selectWindow={value:selectList.rows['window'],sopt:['eq'],searchhidden: true},
-		selectCounter={value:selectList.rows['counter'],sopt:['eq'],searchhidden: true};
+		selectCounter={value:selectList.rows.counter,sopt:['eq'],searchhidden: true};
 	
 	
 	$(".preloader").hide();
@@ -248,7 +248,7 @@ $("#objects").jqGrid({
 									$('#market_price', form).attr({"title":"Цена в формате: 1000000 (только цифры без сокращений)"}); 
 			                      },
 	afterSubmit: function (response) {
-			if(response.responseText=="")
+			if(response.responseText=='')
 			{
 				showErrorDialog('Вы не можите редактировать эту запись!');				
 				return false;
@@ -284,7 +284,7 @@ $("#objects").jqGrid({
 			$('#market_price', form).attr({"title":"Цена в формате: 1000000 (только цифры без сокращений)"});   
 			},afterSubmit: function (response) {
 				
-			if(response.responseText=="")
+			if(response.responseText=='')
 			{
 				showErrorDialog('Вы не можите добавить эту запись!');				
 				return false;
@@ -325,7 +325,7 @@ $("#objects").jqGrid({
 		$(".button-status").click(function(){
 			var mypostdata = $("#objects").jqGrid('getGridParam', 'postData');
 			mypostdata.filters='{"groupOp":"AND","rules":[{"field":"id_time_status","op":"eq","data":"2"}]}';
-			$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true})
+			$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true});
 			$("#objects").trigger("reloadGrid");
 		});
 		
@@ -449,7 +449,7 @@ $("#clients").jqGrid({
             mtype: 'POST',
             colNames:['#','Покупатель','Телефон','Категория','Планировка','Этажность','Цена','Статус по времени','Статус','','Менеджер','Дата',''],
             colModel :[
-                {name:'id_client', index:'id_client', width:15, align:'right',editable:false, search:false,editable:false},
+                {name:'id_client', index:'id_client', width:15, align:'right',editable:false, search:false},
 				{name:'name', index:'clname', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn'],clearSearch:true},editrules:{required:true},editoptions: {maxlength: 150}},
 				{name:'number', index:'number', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn'],clearSearch:true},editrules:{required:true,number:true},editoptions: {maxlength: 11}},
 				{name: 'id_category',index: 'id_category',editable: true,width:150, align:'left',edittype:"select",formatter:"select",editoptions:selectСategory,stype:"select",searchoptions:selectСategory,editrules:{required:true}},
@@ -535,7 +535,7 @@ $("#clients").jqGrid({
 				}
 								
 				mypostdata.filters='{"groupOp":"AND","rules":['+fields[0]+''+fields[1]+''+fields[2]+'{"field":"market_price","op":"ge","data":"'+lowPrice+'"},{"field":"market_price","op":"le","data":"'+highPrice+'"}]}';
-				$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true})
+				$("#objects").jqGrid('setGridParam', {postData: mypostdata, search:true});
 				$("#objects").trigger("reloadGrid");
 				},
 			editurl: '/app/scripts/jqgrid/user_modifydata.php?q=2'
@@ -613,7 +613,7 @@ $("#clients").jqGrid({
 		$(".cl-button-status").click(function(){
 			var mypostdata = $("#clients").jqGrid('getGridParam', 'postData');
 			mypostdata.filters='{"groupOp":"AND","rules":[{"field":"id_time_status","op":"eq","data":"2"}]}';
-			$("#clients").jqGrid('setGridParam', {postData: mypostdata, search:true})
+			$("#clients").jqGrid('setGridParam', {postData: mypostdata, search:true});
 			$("#clients").trigger("reloadGrid");
 		});
 		

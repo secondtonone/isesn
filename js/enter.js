@@ -33,7 +33,7 @@ $(document).ready(function () {
 				}
 				
 			}
-       })
+       });
 	   return false;
 	});
 	
@@ -51,7 +51,7 @@ $(document).ready(function () {
 			success: function(msg){
 					window.location = 'http://'+site+'/main';		
 			}
-       })
+       });
 	   return false;
 	});
 	
