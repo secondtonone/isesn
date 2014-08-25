@@ -81,7 +81,7 @@ $(document).ready(function () {
 		$.ajax({
 			type: "POST",
 			url: "/app/scripts/journal/journal_modify.php",
-			data:"q=2",
+			data:"q=1",
 			async: false
 			});
 	}

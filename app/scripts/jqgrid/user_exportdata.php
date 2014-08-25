@@ -221,7 +221,7 @@ try {
 				//вставляем условия
 				if (in_array($rule->field, $allowedFields)) {
 					
-					$field=$rule->field;
+					$field='c.'.$rule->field;
 						
 					if ($rule->field=='name')
 					{

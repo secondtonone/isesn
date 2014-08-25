@@ -18,6 +18,7 @@ try {
 			$i=0;
 			
 			$res = $dbh->prepare('SELECT `text_notification` FROM `notifications` WHERE `id_status`=?');
+			
 			$res->execute(array(1));
 			
 			while($row = $res->fetch(PDO::FETCH_ASSOC))

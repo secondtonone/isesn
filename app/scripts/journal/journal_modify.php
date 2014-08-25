@@ -1,26 +1,13 @@
-﻿<?php
-/*NOW()+INTERVAL 2 HOUR*/
+<?php
 session_start();
 require_once '../connect.php';
 
 try {
 	if ($_POST['q']==1)
-	{
-	
-		$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
-				
-		$query->execute(array($_SESSION['id_user'],2));	
-		
-		$query=$dbh->prepare('UPDATE `users` SET `online`=? WHERE `id_user`=?');
-				
-		$query->execute(array('offline',$_SESSION['id_user']));	
-	}
-	if ($_POST['q']==2)
 	{	
 		$query=$dbh->prepare('UPDATE `users` SET `online`=?,`time_activity`=NOW()+INTERVAL 2 HOUR WHERE `id_user`=?');
 				
 		$query->execute(array('online',$_SESSION['id_user']));
-		/*Здесь делаем проверку слать в журнал или нет*/	
 	}
 	
 }

@@ -27,7 +27,7 @@ $(document).ready(function(){
 	{	
 		return $.ajax({
 					type: "POST",
-					url: "/app/scripts/journal/online_users.php",
+					url: "/app/scripts/jqgrid/admin_journal_getdata.php?q=3",
 					async: false
 				}).responseText;
 	}
