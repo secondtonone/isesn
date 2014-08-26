@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 	userListGenerate();
 	
-	setInterval(userListGenerate,300000);
+	setInterval(userListGenerate,150000);
 	
 	var selectList=getList(),
 		selectType={value:selectList.rows.type,sopt:['eq']};
@@ -184,7 +184,7 @@ $("#journal").jqGrid({
 			viewrecords: true
         }).navGrid('#pager2',{edit:false,add:false,del:false,view:true,search:true},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,zIndex:99},{width:450,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:450,multipleSearch:true,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}); 
 
-$('.user-list .user').click(function(){
+$('.user-list').on('click','.user',function(){
 		var id_user=$(this).attr('id'),
 			mypostdata = $("#journal").jqGrid('getGridParam', 'postData');
 			mypostdata.filters='{"groupOp":"AND","rules":[{"field":"id_user","op":"eq","data":'+id_user+'}]}';
