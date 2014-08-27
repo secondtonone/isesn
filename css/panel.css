@@ -20,7 +20,7 @@
 	background-repeat: repeat-x;
 }
 .header .navbar .container {
-	max-width: 1400px;
+	max-width: 1600px;
 	min-width: 1183px;
 	margin: 0px auto;
 }
@@ -103,7 +103,7 @@
 	margin: 42px auto 0px;
 	background-color: #FFFFFF;
 	padding: 7px;
-	max-width: 1387px;
+	max-width: 1587px;
 	min-width: 1170px;
 	min-height:800px;
 	height: auto !important;

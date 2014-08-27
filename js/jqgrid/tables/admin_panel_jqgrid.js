@@ -73,7 +73,7 @@ $("#objects").jqGrid({
             mtype: 'POST',
             colNames:['#','','Собственник','Телефон','Район','Улица','Улица','№ дома','Тип здания','Категория','Кол-во комнат','Планировка','Этаж','Этажность','Тип этажности','Площадь, м. кв.','Статус','Статус по времени','Цена','Цена с комиссией','ID Менеджера','Менеджер','Дата','','Ремонт','Окна','Счетчики'],
             colModel :[
-                {name:'id_object', index:'id_object', width:25, align:'left',editable: false,edittype: "text",search:false},
+                {name:'id_object', index:'id_object', width:45, align:'left',editable: false,edittype: "text",search:false},
 				{name: "id_owner",index: "id_owner",editable: true,edittype: "text",hidden:true},
 				{name:'name_owner', index:'name_owner', width:150, align:'left', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true},editoptions: {maxlength: 150}},
 				{name:'number', index:'number', width:140, align:'center', edittype:"text",editable:true,searchoptions:{sopt:['bw','eq','ne','cn']},editrules:{required:true,integer:true},editoptions: {maxlength: 11}},
