@@ -201,8 +201,8 @@ class journal_model extends \App\Core\Model
 		
 		$html_out='';
 			
-		$res = $dbh->prepare('SELECT `id_user`,`login`,`name`,`online` FROM `users` WHERE `active`=? ORDER BY `online` DESC, `login` asc');
-		$res->execute(array(1));
+		$res = $dbh->prepare('SELECT `id_user`,`login`,`name`,`online` FROM `users` ORDER BY `online` DESC, `login` asc');
+		$res->execute(array());
 				
 		while($row = $res->fetch(PDO::FETCH_ASSOC))
 		{

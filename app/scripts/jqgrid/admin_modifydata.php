@@ -25,6 +25,10 @@ try {
 				
 				$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number']));
 				
+				$res=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+				
+				$res->execute(array($_SESSION['id_user'],7));	
+				
 				echo 'Запись добавлена.';
 			}
 				

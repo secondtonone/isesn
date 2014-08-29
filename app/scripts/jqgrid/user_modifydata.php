@@ -48,6 +48,10 @@ try {
 				
 				$query->execute(array($lastid,$_POST['id_district'],$_POST['id_street'],$_POST['house_number'],$_POST['id_building'],$_POST['id_category'],$_POST['room_count'],$_POST['id_planning'],$_POST['floor'],$_POST['number_of_floor'],$id_floor_status,$_POST['space'], $_POST['id_renovation'], $_POST['id_window'], $_POST['id_counter'], $_POST['id_sell_out_status'], $_POST['id_time_status'], $_POST['price'], $_POST['market_price'],$_SESSION['id_user']));
 				
+				$res=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+				
+				$res->execute(array($_SESSION['id_user'],5));	
+				
 				echo 'Запись добавлена.';
 			}
 				
@@ -138,6 +142,10 @@ try {
 				$query=$dbh->prepare('INSERT INTO `clients`(`name`, `number`, `id_category`, `id_planning`,`id_floor_status`, `price`,`id_time_status`, `id_status`, `id_user`, `date`) VALUES (?,?,?,?,?,?,?,?,?,NOW()+INTERVAL 2 HOUR)');
 				
 				$query->execute(array($_POST['name'],$_POST['number'],$_POST['id_category'],$_POST['id_planning'],$_POST['id_floor_status'], $_POST['cl_price'], $_POST['id_time_status'],$_POST['id_status'],$_SESSION['id_user']));
+				
+				$res=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+				
+				$res->execute(array($_SESSION['id_user'],6));
 				
 				echo 'Запись добавлена.';
 			}

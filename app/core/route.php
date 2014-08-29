@@ -57,6 +57,7 @@ class Route
 			/*парсинг URI*/
 			$routes = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 			$routes = explode('/', $routes);
+			$routs_count = count($routes);
 				
 			/*если куки существует, происходит их проверка и запись в сессию*/
 			if (isset($_COOKIE["l"]) and isset($_COOKIE["h"]))
@@ -91,6 +92,10 @@ class Route
 				if (!empty($routes[2]))
 				{	
 					$action_name = self::check_route($routes[2]);
+				}
+				if ($routs_count > 3)
+				{	
+					throw new \Exception();
 				}
 									
 			}
