@@ -21,6 +21,12 @@ $(document).ready(function(){
 				$("#dialog-message").remove();
 			}
 		});
+		setTimeout(function () {
+					$("#dialog-message").empty();
+					$("#dialog-message").remove();
+				}, 7000);
+				
+		return false;
 	}
 	
 	function getUsers()
@@ -69,13 +75,18 @@ $("#notifications").jqGrid({
 			multiselect: true,
 			editurl: '/app/scripts/jqgrid/admin_journal_modifydata.php?q=1',
 			onSelectRow: function(id){}
-        }).navGrid('#pager',{edit:true,add:true,del:false,search:true},{width:460,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) {
+        }).navGrid('#pager',{edit:true,add:true,view:false,del:true,search:true},{width:460,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) {
 			$('#text_notification', form).attr({"title":"Сообщение не должно содержать больше 300 символов."});
 			},
 	afterSubmit: function (response) {
 			if(response.responseText=="")
 			{
 				showErrorDialog('Вы не можите редактировать эту запись!');
+				return false;
+			}
+			else if (response.responseText=="bigger")
+			{
+				showErrorDialog('Сообщение слишком большое!');
 				return false;
 			}
 			else
@@ -95,10 +106,21 @@ $("#notifications").jqGrid({
 				}, 3000);
 				return [true, "", ""];
 			}
-			},},{width:460,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) {
+			}},{width:460,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) {
 				$('#text_notification', form).attr({"title":"Сообщение не должно содержать больше 300 символов."});
 				},afterSubmit: function (response) {
-		
+			if(response.responseText=="")
+			{
+				showErrorDialog('Вы не можите редактировать эту запись!');
+				return false;
+			}
+			else if (response.responseText=="bigger")
+			{
+				showErrorDialog('Сообщение слишком большое!');
+				return false;
+			}
+			else
+			{
 				var myInfo = '<div class="ui-state-highlight ui-corner-all">'+
 							 '<span class="ui-icon ui-icon-info" ' +
 								 'style="float: left; margin-right: .3em;"></span>' +
@@ -113,7 +135,7 @@ $("#notifications").jqGrid({
 					$infoTr.slideUp("slow");
 				}, 3000);
 				return [true, "", ""];
-			
+			}
 			}},{width:460,reloadAfterSubmit:true,zIndex:99},{width:460,reloadAfterSubmit:true,multipleSearch:true,zIndex:99,closeAfterSearch:true},{width:460,reloadAfterSubmit:true,zIndex:99}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''}); 
 
 $("#pager_left table.navtable tbody tr").append('Статус: <select class="active-status"><option value="0" selected="selected">выбрать...</option><option value="1">Активен</option><option value="2">Не активен</option></select>');

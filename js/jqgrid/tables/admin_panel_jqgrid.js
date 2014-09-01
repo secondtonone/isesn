@@ -49,6 +49,11 @@ $(document).ready(function(){
 				$("#dialog-message").remove();
 			}
 		});
+		setTimeout(function () {
+					$("#dialog-message").empty();
+					$("#dialog-message").remove();
+				}, 7000);
+		return false;
 	}
 
 	stikyGenerate();
@@ -452,6 +457,16 @@ $("#users").jqGrid({
 				showErrorDialog('Вы не можите редактировать эту запись!');
 				return false;
 			}
+			else if (response.responseText=="less6")
+			{
+				showErrorDialog('Логин или пароль содержит меньше 6 символов!');
+				return false;
+			}
+			else if (response.responseText=="nomatch")
+			{
+				showErrorDialog('Логин или пароль должен содержать только буквы латинского алфовита и цифры без других символов и пробелов!');
+				return false;
+			}
 			else
 			{
 				var myInfo = '<div class="ui-state-highlight ui-corner-all">'+
@@ -481,6 +496,16 @@ $("#users").jqGrid({
 			if(response.responseText=="")
 			{
 				showErrorDialog('Такой логин уже используется!');				
+				return false;
+			}
+			else if (response.responseText=="less6")
+			{
+				showErrorDialog('Логин или пароль содержит меньше 6 символов!');
+				return false;
+			}
+			else if (response.responseText=="nomatch")
+			{
+				showErrorDialog('Логин или пароль должен содержать только буквы латинского алфовита и цифры без других символов и пробелов!');
 				return false;
 			}
 			else

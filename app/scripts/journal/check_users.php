@@ -1,13 +1,10 @@
 <?php
 
-try {
-		$dbName = 'fb7902gp_esnpro';
-		$dbUser = 'fb7902gp_esnpro';
-		$dbPass = 'second';
-		$dbHost = 'localhost';
+$path=str_replace("journal","connect.php",dirname(__FILE__));
 
-		$dbh = new \PDO('mysql:host='.$dbHost.';dbname='.$dbName, $dbUser, $dbPass);
-		$dbh->exec('SET CHARACTER SET utf8');
+require $path;
+
+try {
 	
 	    $query=$dbh->prepare('SELECT `id_user`,`time_activity` FROM `users` WHERE (`time_activity`+INTERVAL 5 MINUTE) < (NOW()+INTERVAL 2 HOUR) AND `online`=? AND `active`=?');
 		

@@ -19,17 +19,28 @@ try {
 			}
 			else
 			{
-				$pass=md5($_POST['password'].'salt');
-				
-				$query=$dbh->prepare('INSERT INTO `users`(`login`, `password`, `id_right`, `active`, `name`, `number`, `online`) VALUES (?,?,?,?,?,?,"offline")');
-				
-				$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number']));
-				
-				$res=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
-				
-				$res->execute(array($_SESSION['id_user'],7));	
-				
-				echo 'Запись добавлена.';
+				if(strlen($_POST['password'])<6 or strlen($_POST['login'])<6)
+				{
+					echo "less6";
+				}
+				elseif(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['password']) or !preg_match("/^[a-zA-Z0-9]+$/",$_POST['login']))
+				{
+					echo "nomatch";
+				}
+				else
+				{
+					$pass=md5($_POST['password'].'salt');
+					
+					$query=$dbh->prepare('INSERT INTO `users`(`login`, `password`, `id_right`, `active`, `name`, `number`, `online`) VALUES (?,?,?,?,?,?,"offline")');
+					
+					$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number']));
+					
+					$res=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+					
+					$res->execute(array($_SESSION['id_user'],7));	
+					
+					echo 'Запись добавлена.';
+				}
 			}
 				
 		}
@@ -37,21 +48,44 @@ try {
 		{
 			if (!empty($_POST['password']))
 			{
-				$pass=md5($_POST['password'].'salt');
-				
-				$query=$dbh->prepare('UPDATE `users` SET `login`=?,`password`=?,`id_right`=?,`active`=?,`name`=?,`number`=? WHERE `id_user`=?');
-				$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number'],$_POST['id']));
+				if(strlen($_POST['password'])<6 or strlen($_POST['login'])<6)
+				{
+					echo "less6";
+				}
+				elseif(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['password']) or !preg_match("/^[a-zA-Z0-9]+$/",$_POST['login']))
+				{
+					echo "nomatch";
+				}
+				else
+				{
+					$pass=md5($_POST['password'].'salt');
 					
+					$query=$dbh->prepare('UPDATE `users` SET `login`=?,`password`=?,`id_right`=?,`active`=?,`name`=?,`number`=? WHERE `id_user`=?');
+					$query->execute(array($_POST['login'],$pass,$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number'],$_POST['id']));
+					
+					echo "Запись отредактирована!";	
+				}
 				
 			}
 			else
 			{
-				$query=$dbh->prepare('UPDATE `users` SET `login`=?,`id_right`=?,`active`=?,`name`=?,`number`=? WHERE `id_user`=?');
-				$query->execute(array($_POST['login'],$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number'],$_POST['id']));
+				if(strlen($_POST['login'])<6)
+				{
+					echo "less6";
+				}
+				elseif(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login']))
+				{
+					echo "nomatch";
+				}
+				else
+				{
+					$query=$dbh->prepare('UPDATE `users` SET `login`=?,`id_right`=?,`active`=?,`name`=?,`number`=? WHERE `id_user`=?');
+					$query->execute(array($_POST['login'],$_POST['id_right'],$_POST['active'],$_POST['name'],$_POST['number'],$_POST['id']));
+					
+					echo "Запись отредактирована!";	
+				}
 				
 			}
-			
-			echo "Запись отредактирована!";	
 		}
 		if ($_POST['oper']=="activestatus")
 		{

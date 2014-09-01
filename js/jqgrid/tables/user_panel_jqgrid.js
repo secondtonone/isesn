@@ -50,6 +50,10 @@ $(document).ready(function(){
 				$("#dialog-message").remove();
 			}
 		});
+		setTimeout(function () {
+					$("#dialog-message").empty();
+					$("#dialog-message").remove();
+				}, 7000);
 		return false;
 	}
 	$(document.body).on('keyup','#floor', function() {
