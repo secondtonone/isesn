@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class panel_controller extends \App\Core\Controller
+class journal_controller extends \App\Core\Controller
 {
 	function __construct()
     {
@@ -13,7 +13,6 @@ class panel_controller extends \App\Core\Controller
 	
 	function admin()
     {	
-		$bootstrap='panel_bootstrap.php';
         $this->view->generate('journal_view.php', $this->template,$this->bootstrap);
     }
 }

@@ -201,12 +201,35 @@ class journal_model extends \App\Core\Model
 		
 		$html_out='';
 			
-		$res = $dbh->prepare('SELECT `id_user`,`login`,`name`,`online` FROM `users` ORDER BY `online` DESC, `login` asc');
+		$res = $dbh->prepare('SELECT u.`id_user`,u.`name` , u.`login` , u.`online`,u.`time_activity`, obj, client, objsell FROM `users` u LEFT JOIN (SELECT `id_user` AS uid, COUNT(`id_object`) AS obj FROM `objects` WHERE `id_sell_out_status`=1 OR `id_sell_out_status`=4 GROUP BY `id_user`) Q1 ON Q1.uid=u.`id_user` LEFT JOIN (SELECT `id_user` AS uid, COUNT(`id_client`) AS client FROM `clients` WHERE `id_status`=1 GROUP BY `id_user`) Q2 ON Q2.uid=u.`id_user` LEFT JOIN (SELECT `id_user` AS uid, COUNT(`id_object`) AS objsell FROM `objects` WHERE `id_sell_out_status`=2 GROUP BY `id_user`) Q3 ON Q3.uid=u.`id_user` ORDER BY `online` DESC, `login` asc');
 		$res->execute(array());
 				
 		while($row = $res->fetch(PDO::FETCH_ASSOC))
 		{
-			$html_temp = '<div id="'.$row['id_user'].'" class="user '.$row['online'].'">
+			$object=$row['obj'];
+			$obj_sell=$row['objsell'];
+			$client=$row['client'];
+			$time_activity=$row['time_activity'];
+			
+			if (empty($object))
+			{
+				$object=0;
+			}
+			if (empty($obj_sell))
+			{
+				$obj_sell=0;
+			}
+			if (empty($client))
+			{
+				$client=0;
+			}
+			if (empty($time_activity))
+			{
+				$time_activity='-';
+			}
+			
+			$html_temp = '<div id="'.$row['id_user'].'" class="user '.$row['online'].'" title="Всего активных объектов: '.$object.'<br>Объектов продано: '.$obj_sell.'<br>Всего активных покупателей: '.$client.'<br>
+			Последняя активность: '.$time_activity.'">
 							<div class="marker '.$row['online'].'"></div>
 							<div class="wrap">
 								<div class="login">'.$row['login'].'</div>

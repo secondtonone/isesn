@@ -18,4 +18,14 @@ class Controller {
     {
 		
     }
+	
+	function admin()
+    {
+		
+    }
+	
+	function user()
+    {
+		
+    }
 }
