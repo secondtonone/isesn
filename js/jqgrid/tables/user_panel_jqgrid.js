@@ -185,6 +185,48 @@ $("#objects").jqGrid({
 				}
 				return true; 
 			},
+			ondblClickRow: function (id){
+				
+				var mypostdata = $("#clients").jqGrid('getGridParam', 'postData'),
+					rowData = $("#objects").jqGrid('getRowData',id),
+					id_category = rowData.id_category,
+					id_planning = rowData.id_planning,
+					id_floor_status = rowData.id_floor_status,
+					price = rowData.market_price,
+					fields = ['{"field":"id_category","op":"eq","data":"'+id_category+'"},',
+							  '{"field":"id_planning","op":"eq","data":"'+id_planning+'"},',
+							  '{"field":"id_floor_status","op":"eq","data":"'+id_floor_status+'"},'],
+					lowPrice,
+					highPrice;
+					
+				lowPrice=parseInt(price)-100000;
+				highPrice=parseInt(price)+100000;
+				
+				if (id_category=='13')
+				{	
+					fields[0] = '';
+				}
+				if (id_planning=='7')
+				{	
+					fields[1] = '';
+				}
+				if (id_floor_status=='4')
+				{	
+					fields[2] = '{"field":"id_floor_status","op":"ne","data":"1"},';
+				}
+				if (id_floor_status=='5')
+				{	
+					fields[2] = '{"field":"id_floor_status","op":"ne","data":"2"},';
+				}
+				if (id_floor_status=='6')
+				{	
+					fields[2] = '';
+				}
+								
+				mypostdata.filters='{"groupOp":"AND","rules":['+fields[0]+''+fields[1]+''+fields[2]+'{"field":"price","op":"ge","data":"'+lowPrice+'"},{"field":"price","op":"le","data":"'+highPrice+'"}]}';
+				$("#clients").jqGrid('setGridParam', {postData: mypostdata, search:true});
+				$("#clients").trigger("reloadGrid");
+				},
 			subGridRowExpanded: function(subgrid_id, row_id) {
 			
 				var lastSel,subgrid_table_id, pager_id;
@@ -235,8 +277,7 @@ $("#objects").jqGrid({
 				}
 				});			
 		
-			},
-			onSelectRow: function(id){}
+			}
         }).navGrid('#pager',{edit:true,add:true,del:false,search:true},{width:350,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) { 
 									$('#tr_id_renovation', form).hide();
 									$('#tr_id_window', form).hide();

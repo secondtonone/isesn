@@ -176,8 +176,7 @@ $("#objects").jqGrid({
 				height: '100%'
 				});			
 		
-			},
-			onSelectRow: function(id){}
+			}
         }).navGrid('#pager',{edit:true,add:false,del:false,search:true},{width:360,reloadAfterSubmit:true,zIndex:99, beforeShowForm: function(form) { 
 									$('#tr_id_renovation', form).hide();
 									$('#tr_id_window', form).hide();
