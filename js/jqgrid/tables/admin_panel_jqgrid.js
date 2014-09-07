@@ -67,7 +67,7 @@ $(document).ready(function(){
 		selectDistrict={value:selectList.rows.district,sopt:['eq']},
 		selectFloor={value:selectList.rows.floor,sopt:['eq'],searchhidden: true},
 		selectRenovation={value:selectList.rows.renovation,sopt:['eq'],searchhidden: true},
-		selectWindow={value:selectList.rows['window'],sopt:['eq'],searchhidden: true},
+		selectWindow={value:selectList.rows.window,sopt:['eq'],searchhidden: true},
 		selectCounter={value:selectList.rows.counter,sopt:['eq'],searchhidden: true};
 		
 	$(".preloader").hide();
@@ -240,7 +240,7 @@ $("#objects").jqGrid({
           $("#objects").jqGrid('excelExport',{"url":"/app/scripts/jqgrid/admin_exportdata.php?q=1"});
        } , position: "last", title:"Экспорт в Excel", cursor: "pointer"}).navSeparatorAdd("#pager",{sepclass:"ui-separator",sepcontent: ''});
 	   
-	   $("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+	   $("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1800});
 	    
 	   
 $("#pager_left table.navtable tbody tr").append ('Передача объектов: <input id="id_user" type="hidden"/><input id="name_user" type="text" placeholder="Кому" name="user"/><button id="hand-over" title="Передать объекты другому менеджеру">Передать</button>');
@@ -526,7 +526,7 @@ $("#users").jqGrid({
 			}
 			}},{width:350,reloadAfterSubmit:true,zIndex:99},{width:460,reloadAfterSubmit:true,multipleSearch:true,zIndex:99},{width:350,reloadAfterSubmit:true,zIndex:99,closeAfterSearch:true}).navSeparatorAdd("#pager2",{sepclass:"ui-separator",sepcontent: ''});
 
-$("#users").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+$("#users").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1800});
 
 $("#pager2_left table.navtable tbody tr").append('Статус: <select class="active-status"><option value="0" selected="selected">выбрать...</option><option value="1">Активен</option><option value="2">Не активен</option></select>');
 

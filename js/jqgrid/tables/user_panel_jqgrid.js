@@ -94,7 +94,7 @@ $(document).ready(function(){
 		selectDistrict={value:selectList.rows.district,sopt:['eq']},
 		selectFloor={value:selectList.rows.floor,sopt:['eq'],searchhidden: true},
 		selectRenovation={value:selectList.rows.renovation,sopt:['eq'],searchhidden: true},
-		selectWindow={value:selectList.rows['window'],sopt:['eq'],searchhidden: true},
+		selectWindow={value:selectList.rows.window,sopt:['eq'],searchhidden: true},
 		selectCounter={value:selectList.rows.counter,sopt:['eq'],searchhidden: true};
 	
 	
@@ -360,7 +360,7 @@ $("#objects").jqGrid({
 	   
 	    $("#edit_objects").addClass('ui-state-disabled'); 
 		
-	   	$("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+	   	$("#objects").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1800});
 		
 		$("#pager_left table.navtable tbody tr").append ('<div class="select-wrap">Статус: <select class="sell-out-status"><option value="0" selected="selected">выбрать...</option><option value="1">В продаже</option><option value="2">Продано</option><option value="3">Снять</option><option value="4">Времено снять</option></select></div>');
 		$("#pager_left table.navtable tbody tr").append ('  <div class="select-wrap">Статус по времени: <select class="time-status"><option value="0" selected="selected">выбрать...</option><option value="2">срочно</option><option value="1">не срочно</option></select></div>');
@@ -647,7 +647,7 @@ $("#clients").jqGrid({
 	   
 	   $("#edit_clients").addClass('ui-state-disabled'); 
 	   
-	   $("#clients").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1400});
+	   $("#clients").jqGrid('gridResize', { minWidth: 1150,maxWidth: 1800});
 	   
 	   $("#pager2_left table.navtable tbody tr").append('<div class="cl-select-wrap">Статус: <select class="active-status"><option value="0" selected="selected">выбрать...</option><option value="1">Активен</option><option value="2">Не активен</option></select></div>');
 	   
