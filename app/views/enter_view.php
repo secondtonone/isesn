@@ -23,9 +23,7 @@
             <div class="form-actions">
                 <label class="checkbox">
                     <div class="checker">
-                        <span>
-                            <input type="checkbox" name="checked" value="1"/>
-                        </span>
+                           <input type="checkbox" name="checked" value="1"/>
                     </div>
                      Запомнить меня 
                 </label>

@@ -20,4 +20,8 @@
         </div>
     </div>
     <div class="page-content">
+        <div id="container">
+        </div>
+        <div id="container-2">
+        </div>  
 	</div>  

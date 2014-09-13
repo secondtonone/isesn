@@ -5,27 +5,28 @@ require_once '../connect.php';
 try {
 	if ($_GET['q']==1)
 	{
-		if($_POST['floor']==1)
-		{
-			$id_floor_status=1;
-		}	
-		if($_POST['floor']==$_POST['number_of_floor'] and $_POST['floor']!=1)
-		{
-			$id_floor_status=2;	
-		}
-		if($_POST['floor']!=1 and $_POST['floor']!=$_POST['number_of_floor'])
-		{
-			$id_floor_status=3;
-		}
-		if($_POST['id_sell_out_status']==2)
-		{
-			$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
-				
-			$query->execute(array($_SESSION['id_user'],3));	
-		}
 		
 		if ($_POST['oper']=="add")
 		{
+			if($_POST['floor']==1)
+			{
+				$id_floor_status=1;
+			}	
+			if($_POST['floor']==$_POST['number_of_floor'] and $_POST['floor']!=1)
+			{
+				$id_floor_status=2;	
+			}
+			if($_POST['floor']!=1 and $_POST['floor']!=$_POST['number_of_floor'])
+			{
+				$id_floor_status=3;
+			}
+			
+			if($_POST['id_sell_out_status']==2)
+			{
+				$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+					
+				$query->execute(array($_SESSION['id_user'],3));	
+			}
 			$res = $dbh->prepare('SELECT o.`id_object` FROM `objects` o LEFT JOIN `objects_owners` ow ON o.`id_owner`= ow.`id_owner` WHERE o.`id_street`=? AND o.`house_number`=? AND o.`id_category`=? AND o.`room_count`=? AND o.`id_planning`=? AND o.`floor`=? AND ow.`number`=?');
 			
 			$res->execute(array($_POST['id_street'],$_POST['house_number'],$_POST['id_category'],$_POST['room_count'],$_POST['id_planning'],$_POST['floor'],$_POST['number']));
@@ -58,6 +59,25 @@ try {
 		}
 		if ($_POST['oper']=="edit")
 		{
+			if($_POST['floor']==1)
+			{
+				$id_floor_status=1;
+			}	
+			if($_POST['floor']==$_POST['number_of_floor'] and $_POST['floor']!=1)
+			{
+				$id_floor_status=2;	
+			}
+			if($_POST['floor']!=1 and $_POST['floor']!=$_POST['number_of_floor'])
+			{
+				$id_floor_status=3;
+			}
+			if($_POST['id_sell_out_status']==2)
+			{
+				$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+					
+				$query->execute(array($_SESSION['id_user'],3));	
+			}
+			
 			if ($_SESSION['id_user']==$_POST['id_user'])
 			{
 				

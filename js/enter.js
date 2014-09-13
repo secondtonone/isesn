@@ -55,4 +55,13 @@ $(document).ready(function () {
 	   return false;
 	});
 	
+	$('.text-box').click(function(){
+		
+		$(this).html('ИС ЕСН &copy; Кузнецов Максим 2014');
+		
+		setTimeout(function() { 
+						$('.text-box').html('ИС ЕСН &copy; ООО Статус 2014');
+					}, 7000);
+		});
+	
 });
