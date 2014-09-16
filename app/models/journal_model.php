@@ -210,6 +210,7 @@ class journal_model extends \App\Core\Model
 			$obj_sell=$row['objsell'];
 			$client=$row['client'];
 			$time_activity=$row['time_activity'];
+			$online=$row['online'];
 			
 			if (empty($object))
 			{
@@ -227,10 +228,13 @@ class journal_model extends \App\Core\Model
 			{
 				$time_activity='-';
 			}
+			if (empty($online))
+			{
+				$online='offline';
+			}
 			
-			$html_temp = '<div id="'.$row['id_user'].'" class="user '.$row['online'].'" title="Всего активных объектов: '.$object.'<br>Объектов продано: '.$obj_sell.'<br>Всего активных покупателей: '.$client.'<br>
-			Последняя активность: '.$time_activity.'">
-							<div class="marker '.$row['online'].'"></div>
+			$html_temp = '<div id="'.$row['id_user'].'" class="user '.$online.'" title="Всего активных объектов: '.$object.'<br>Объектов продано: '.$obj_sell.'<br>Всего активных покупателей: '.$client.'<br>Последняя активность: '.$time_activity.'">
+							<div class="marker '.$online.'"></div>
 							<div class="wrap">
 								<div class="login">'.$row['login'].'</div>
 								<div class="name">'.$row['name'].'</div>

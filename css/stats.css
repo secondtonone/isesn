@@ -1,2 +1,26 @@
-
+.stat-container {
+	border: 1px solid #2E4293;
+	margin-top:10px;
+}
+.caption {
+	background: #2E4293;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 10px;
+	margin-bottom:10px;
+}
+.stat-control {
+	font-size: 14px;
+	color: #2E4293;
+	padding: 10px;
+}
+.line-chart::after {
+	content: " ";
+}
+.area-chart::after {
+	content: " ";
+}
+.bar-chart::after {
+	content: " ";
+}
 
