@@ -254,8 +254,9 @@ class panel_model extends \App\Core\Model
 							
 				//вставляем условия
 				if (in_array($rule->field, $allowedFields)) {
+					
 					$field=$rule->field;
-						
+					
 					switch ($rule->op) {
 						case 'lt': $qWhere .= $field.' < '.$dbh->quote($rule->data); break;
 						case 'le': $qWhere .= $field.' <= '.$dbh->quote($rule->data); break;

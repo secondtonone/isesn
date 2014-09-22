@@ -5,17 +5,10 @@ $path=str_replace("journal","connect.php",dirname(__FILE__));
 require $path;
 
 try {
-/*	$result='';
+	$result='';
 	
-	 $query=$dbh->prepare('SELECT `id_user` FROM `users` WHERE `online`=? AND `active`=?');
-		
-	$query->execute(array('online',1));
-	
-	while($row = $query->fetch(PDO::FETCH_ASSOC)) 
-	{
-			$result.=$row['id_user'];
-	}
-	echo $result;*/
+	$query=$dbh->prepare('DELETE FROM `users_journal` WHERE (MONTH(NOW())-MONTH(`time_event`))>2');	
+	$query->execute(array());
 	
 }
 catch (PDOException $e) {

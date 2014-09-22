@@ -22,7 +22,8 @@
     <div class="page-content">
     	<div class="stat-container">
         	<div class="caption"><i class="icon line-chart"></i>Квартиры</div>
-            <div id="container">
+            <div class="coming-soon">
+            	В разработке...
             </div>
             <div class="stat-control">
             	Год: 
@@ -49,7 +50,8 @@
         </div>
         <div class="stat-container">
         	<div class="caption"><i class="icon bar-chart"></i>Квартиры</div>
-            <div id="container-2">
+            <div class="coming-soon">
+            	В разработке...
             </div>
             <div class="stat-control">
             	Год: 
@@ -76,7 +78,8 @@
         </div>
         <div class="stat-container">
         	<div class="caption"><i class="icon area-chart"></i>Квартиры</div>
-            <div id="container-3">
+            <div class="coming-soon">
+            	В разработке...
             </div>
             <div class="stat-control">
             	Год: 
