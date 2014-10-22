@@ -113,27 +113,28 @@ try {
 	}
 	if ($_GET['q']==2)
 	{
-		if($_POST['floor']==1)
-		{
-			$id_floor_status=1;
-		}	
-		if($_POST['floor']==$_POST['number_of_floor'] and $_POST['floor']!=1)
-		{
-			$id_floor_status=2;	
-		}
-		if($_POST['floor']!=1 and $_POST['floor']!=$_POST['number_of_floor'])
-		{
-			$id_floor_status=3;
-		}
-		if($_POST['id_sell_out_status']==2)
-		{
-			$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
-				
-			$query->execute(array($_POST['id_user'],3));	
-		}
 		
 		if ($_POST['oper']=="edit")
 		{
+			if($_POST['floor']==1)
+			{
+				$id_floor_status=1;
+			}	
+			if($_POST['floor']==$_POST['number_of_floor'] and $_POST['floor']!=1)
+			{
+				$id_floor_status=2;	
+			}
+			if($_POST['floor']!=1 and $_POST['floor']!=$_POST['number_of_floor'])
+			{
+				$id_floor_status=3;
+			}
+			if($_POST['id_sell_out_status']==2)
+			{
+				$query=$dbh->prepare('INSERT INTO `users_journal`(`id_user`, `id_type_event`,`time_event`) VALUES (?,?,NOW()+INTERVAL 2 HOUR)');
+					
+				$query->execute(array($_POST['id_user'],3));	
+			}
+			
 			$res = $dbh->prepare('SELECT o.`price`,o.`market_price`,o.`date_change` FROM `objects` o WHERE o.`id_object`=?');
 			
 			$res->execute(array($_POST['id']));

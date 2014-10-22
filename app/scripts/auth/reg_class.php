@@ -88,8 +88,8 @@ class reg_class {
 		$data=$reg_class->get_data($login,$reg_class->query_for_data);
 		
 		$gen_hash=$reg_class->make_cookies($data["login"],$data["browser"]);
-		
-		if($gen_hash==$hash_cookie)
+		/*добавить проверка на активность*/
+		if($gen_hash==$hash_cookie AND $data["active"]==1)
 		{
 			$ip=$_SERVER['REMOTE_ADDR'];
 			$browser=$_SERVER['HTTP_USER_AGENT'];

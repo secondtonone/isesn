@@ -2,6 +2,30 @@ $(document).ready(function () {
 	
 	var	site=window.location.hostname;
 	
+	function activityTime () {
+		$.ajax({
+			type: "POST",
+			url: "/app/scripts/journal/journal_modify.php",
+			data:"q=1",
+			async: false
+			});
+	}
+	
+	function setYearSelect () {
+		var today = new Date(),
+			year = today.getFullYear(),
+			selectOptions;
+		
+		for (var i=2014;i<year;i++)//сменить на 2014
+		{
+			selectOptions += '<option value="'+i+'">'+i+'</option>';		
+		}
+		
+		selectOptions +='<option value="'+year+'" selected="selected">'+year+'</option>'
+		
+		$('.stat-control .year').html(selectOptions);
+	}
+	
 	$('.exit').click(function(){
 		
 		var	site=window.location.hostname;
@@ -77,15 +101,8 @@ $(document).ready(function () {
         height: '720px'
     });
 	
-	function activityTime () {
-		$.ajax({
-			type: "POST",
-			url: "/app/scripts/journal/journal_modify.php",
-			data:"q=1",
-			async: false
-			});
-	}
 	activityTime();
 	setInterval(activityTime,300000);
 	
+	setYearSelect();
 });

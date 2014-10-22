@@ -22,9 +22,9 @@ try {
 	if ($_GET['q']=="user")
 	{
 
-		$res = $dbh->prepare("SELECT `id_user`, `name` FROM `users` WHERE `name` LIKE ?");
+		$res = $dbh->prepare("SELECT `id_user`, `name` FROM `users` WHERE `id_right`=? AND `name` LIKE ?");
 		
-		$res->execute(array("%$term%"));
+		$res->execute(array('user',"%$term%"));
 		
 		while($row = $res->fetch(PDO::FETCH_ASSOC)) 
 		{
