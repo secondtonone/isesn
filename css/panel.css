@@ -99,13 +99,11 @@
 	text-shadow: 1px 1px 2px black, 0 0 1em white;
 }
 .page-content {
-	border: 1px solid #E2E2E2 !important;
+	border: 0px solid #E2E2E2 !important;
 	margin: 42px auto 0px;
-	background-color: #FFFFFF;
 	padding: 7px;
-	max-width: 1787px;
-	min-width: 1170px;
 	min-height:800px;
+	max-width: 1800px;
 	height: auto !important;
 }
 .preloader {
@@ -129,7 +127,7 @@
 .button-status,
 .cl-button-status,
 #hand-over,
-#hand-over-sub { 
+#hand-over-sub {
 	background-color: #75adff !important;
 	color: #FFFFFF !important;
 	border: 0px none;
@@ -144,11 +142,11 @@
 }
 .button-status:hover,
 #hand-over:hover,
-#hand-over-sub:hover  { 
+#hand-over-sub:hover  {
 	background-color: #0C0C69 !important;
 }
-.alt-row-class { 
-	background-color: #F2F2F2; 
+.alt-row-class {
+	background-color: #F2F2F2;
 	background-image: none;
 	color:#010011;
 }
@@ -177,7 +175,7 @@
 	font-weight: 500;
 	font-size: 14px;
 	color: #2E4293 !important;
-	margin-right:5px; 
+	margin-right:5px;
 }
 .icon-object::after {
 	content: " ";
