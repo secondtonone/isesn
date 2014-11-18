@@ -297,7 +297,7 @@ $(document).ready(function () {
 	}
 
 
-	function getSystemStats() {
+	/*function getSystemStats() {
 
 		$.ajax({
 			type: "POST",
@@ -388,14 +388,10 @@ $(document).ready(function () {
 				{
 					$("#month-visits").css("color", "#E02222");
 				}
-				/*$.each(response, function(category, param) {
-				    $.each(param, function(item) {
-					    alert(item);
-					});
-				});*/
+
 			}
 		});
-	}
+	}*/
 
 	function setYearSelect (year) {
 		var selectOptions='';
@@ -424,7 +420,7 @@ $(document).ready(function () {
 	getYearSellsObjectsRadar(year);
 	getYearPriceObjects(year);
 	getYearDynamicDB(year);
-	getSystemStats();
+	/*getSystemStats();*/
 
 
 	$("#change-year-sells-objects").change(function() {

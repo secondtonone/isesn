@@ -41,12 +41,12 @@ try {
 			$stats->yearDynamicDB($_POST['year']);
 			break;
 		}
-		case 'systemstats':
+		/*case 'systemstats':
 		{
 			$stats = new stats_model();
 			$stats->systemStats();
 			break;
-		}
+		}*/
 	}
 }
 catch (Exception $e) {

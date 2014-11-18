@@ -160,7 +160,7 @@ class stats_model extends \App\Core\Model
 
 		echo json_encode($response);
 	}
-	public function systemStats()
+	/*public function systemStats()
 	{
 		$response=new stdClass();
 		$rowJSON=array();
@@ -209,5 +209,5 @@ class stats_model extends \App\Core\Model
 		$response->visits=$row;
 
 		echo json_encode($response);
-	}
+	}*/
 }

@@ -105,8 +105,8 @@
             </div>
         </div>
         <div class="stat-container">
-            <div class="caption"><i class="icon area-chart"></i>Статистика системы</div>
-                <div class="table-wrapper">
+            <div class="caption"><i class="icon area-chart"></i>Динамика роста БД</div>
+                <!-- <div class="table-wrapper">
                     <h4>Всего записей в БД</h4>
                     <table>
                         <tbody>
@@ -146,9 +146,9 @@
                             <tr><td>За 30 дней:</td><td title="Рекомендованная величина:210" class="table-value" id="month-visits"></td></tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
                 <div class="canvas-holder-dynamic">
-                    <h4>Динамика роста БД</h4>
+                    <!-- <h4>Динамика роста БД</h4> -->
                     <div id="year-dynamic-db-canvas-wrapper">
                         <canvas  id="year-dynamic-db"></canvas>
                     </div>
