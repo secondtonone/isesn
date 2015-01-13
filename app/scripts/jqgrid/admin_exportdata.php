@@ -16,7 +16,7 @@ try {
 
 
 		if (isset($_GET['_search']) && $_GET['_search'] == 'true') {
-			$allowedFields = array('name_owner','number','id_district', 'name_street', 'house_number' ,'id_category' ,'room_count' , 'id_planning','id_building' , 'floor','number_of_floor' , 'space' ,'id_renovation','id_floor_status','id_window' ,'id_counter','id_sell_out_status', 'id_time_status' , 'price' , 'market_price' ,'name' , 'date');
+			$allowedFields = array('name_owner','number','id_district', 'name_street', 'house_number' ,'id_category' ,'room_count' , 'id_planning','id_building' , 'floor','number_of_floor' , 'space' ,'id_renovation','id_floor_status','id_window' ,'id_counter','id_sell_out_status', 'id_time_status' , 'price' , 'market_price' ,'name' ,'id_user', 'date');
 			$allowedOperations = array('AND', 'OR');
 
 			$searchData = json_decode($_GET['filters']);
@@ -48,6 +48,10 @@ try {
 					if ($rule->field=='name')
 					{
 						 $field='u.name';
+					}
+					if ($rule->field=='id_user')
+					{
+						 $field='u.id_user';
 					}
 					if ($rule->field=='number')
 					{
@@ -161,8 +165,6 @@ try {
 		 }
 		 echo '</table>';
 	}
-	if($_GET['q']==2)
-	{}
 }
 catch (PDOException $e) {
     echo 'Database error: '.$e->getMessage();
