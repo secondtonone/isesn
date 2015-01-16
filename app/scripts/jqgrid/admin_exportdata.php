@@ -13,6 +13,29 @@ try {
 		$qWhere = '';
 		//определяем команду (поиск или просто запрос на вывод данных)
 		//если поиск, конструируем WHERE часть запроса
+		//для сортировки переписать
+		// $field='o.'.$rule->field;
+
+		// if ($rule->field=='name')
+		// {
+		// 	 $field='u.name';
+		// }
+		// if ($rule->field=='id_user')
+		// {
+		// 	 $field='u.id_user';
+		// }
+		// if ($rule->field=='number')
+		// {
+		// 	 $field='ow.number';
+		// }
+		// if ($rule->field=='name_owner')
+		// {
+		// 	 $field='ow.name_owner';
+		// }
+		// if ($rule->field=='name_street')
+		// {
+		// 	 $field='st.name_street';
+		// }
 
 
 		if (isset($_GET['_search']) && $_GET['_search'] == 'true') {
